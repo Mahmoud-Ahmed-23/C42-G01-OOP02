@@ -163,22 +163,22 @@ namespace Demo
 
             #region Overriding
 
-            TypeA typeA = new TypeA(3);
+            //TypeA typeA = new TypeA(3);
 
-            Console.WriteLine(typeA.ToString());
+            //Console.WriteLine(typeA.ToString());
 
-            typeA.MyFun01();
+            //typeA.MyFun01();
 
-            typeA.MyFun02();
+            //typeA.MyFun02();
 
 
-            TypeB typeB = new TypeB(3, 2);
+            //TypeB typeB = new TypeB(3, 2);
 
-            Console.WriteLine(typeA.ToString());
+            //Console.WriteLine(typeA.ToString());
 
-            typeB.MyFun01();
+            //typeB.MyFun01();
 
-            typeB.MyFun02();
+            //typeB.MyFun02();
 
 
             #endregion
@@ -186,39 +186,73 @@ namespace Demo
 
             #region Binding
 
-            TypeA RefBase = new TypeB(3, 2);
+            //TypeA RefBase = new TypeB(3, 2);
 
-            RefBase.A = 11;
+            //RefBase.A = 11;
 
-            //RefBase.B = 22; invalid
+            ////RefBase.B = 22; invalid
 
-            RefBase.MyFun01(); // I am Base [Parent]
+            //RefBase.MyFun01(); // I am Base [Parent]
 
-            RefBase.MyFun02(); // TypeA: 3 , TypeB: 2
+            //RefBase.MyFun02(); // TypeA: 3 , TypeB: 2
 
             #endregion
+
 
             #region binding is a behivour
 
-            FullTimeEmploe fullTimeEmploe = new FullTimeEmploe()
-            {
-                Id = 10,
-                Name = "ahmed",
-                age = 28,
-                Salary = 5000
-            };
+            //FullTimeEmploe fullTimeEmploe = new FullTimeEmploe()
+            //{
+            //    Id = 10,
+            //    Name = "ahmed",
+            //    age = 28,
+            //    Salary = 5000
+            //};
 
-            proccessEmployee(fullTimeEmploe);
+            //proccessEmployee(fullTimeEmploe);
 
-            PartTimeemploee partTimeemploee = new PartTimeemploee()
-            {
-                Id = 1,
-                Name = "ahmed",
-                age = 48,
-                hoursalary = 60
-            };
+            //PartTimeemploee partTimeemploee = new PartTimeemploee()
+            //{
+            //    Id = 1,
+            //    Name = "ahmed",
+            //    age = 48,
+            //    hoursalary = 60
+            //};
 
             #endregion
+
+
+            #region more practice on binding
+
+            TypeA typeA = new TypeC(1, 2, 3);
+            typeA.A = 11;
+            //typeA.B = 11;
+            //typeA.C = 11;
+
+            typeA.MyFun01(); //BINDING PARENT static
+
+            typeA.MyFun02(); //dynamic byding typec a=11,b=2 c=3
+
+            TypeB typeB = new TypeC(1, 2, 3);
+            typeB.A = 11;
+            typeB.B = 11;
+            //typeB.C = 11;
+
+            typeA.MyFun01(); //BINDING CHILD static
+
+            typeA.MyFun02(); //type c a = 11,b = 22 c = 3
+
+
+            typeA = new TypeE(1, 2, 3, 4, 5);
+            typeB = new TypeE(1, 2, 3, 4, 5);
+            TypeC typeC = new TypeE(1, 2, 3, 4, 5);
+
+            Console.WriteLine("after break the chain");
+            TypeD typeD = new TypeE(1, 2, 3, 4, 5);
+            typeD.MyFun02(); //typed a = 1, b = 2 c = 3,d = 4,e = 5 
+
+            #endregion
+
 
         }
     }
