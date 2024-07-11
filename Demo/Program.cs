@@ -1,4 +1,5 @@
 ﻿using Demo.Inheritance;
+using Demo.Polymorphism;
 
 namespace Demo
 {
@@ -93,6 +94,30 @@ namespace Demo
 
 
             #endregion
+
+
+            #region Overriding
+
+            TypeA typeA = new TypeA(3);
+
+            Console.WriteLine(typeA.ToString());
+
+            typeA.MyFun01();
+
+            typeA.MyFun02();
+
+
+            TypeB typeB = new TypeB(3, 2);
+
+            Console.WriteLine(typeA.ToString());
+
+            typeB.MyFun01();
+
+            typeB.MyFun02();
+
+
+            #endregion
+
 
 
 
