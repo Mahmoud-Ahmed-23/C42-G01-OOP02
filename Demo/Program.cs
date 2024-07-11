@@ -4,6 +4,26 @@ namespace Demo
 {
     internal class Program
     {
+        #region OverLoading
+
+        public void Sum(int x, int y)
+        {
+            Console.WriteLine(x + y);
+        }
+
+        public void Sum(int x, double y)
+        {
+            Console.WriteLine(x + y);
+        }
+
+
+        public void Sum(double x, double y)
+        {
+            Console.WriteLine(x + y);
+        }
+
+
+        #endregion
         static void Main(string[] args)
         {
 
