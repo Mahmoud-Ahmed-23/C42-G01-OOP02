@@ -50,7 +50,7 @@ namespace Demo.Polymorphism
 
         public override void MyFun02()
         {
-            Console.WriteLine($"TypeA: {A}");
+            Console.WriteLine($"TypeA: {A}\nTypeB: {B}");
         }
 
 

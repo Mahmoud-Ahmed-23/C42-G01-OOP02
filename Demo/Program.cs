@@ -119,6 +119,20 @@ namespace Demo
             #endregion
 
 
+            #region Binding
+
+            TypeA RefBase = new TypeB(3, 2);
+            
+            RefBase.A = 11;
+
+            //RefBase.B = 22; invalid
+
+            RefBase.MyFun01(); // I am Base [Parent]
+
+            RefBase.MyFun02(); // TypeA: 3 , TypeB: 2
+
+            #endregion
+
 
 
         }
