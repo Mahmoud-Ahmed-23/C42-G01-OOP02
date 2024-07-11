@@ -25,6 +25,71 @@ namespace Demo
 
 
         #endregion
+
+
+        #region binding is a behivour
+        public class Employee
+        {
+            public int Id { get; set; }
+
+            public string? Name { get; set; }
+
+            public int? age { get; set; }
+
+            public void func01()
+            {
+                Console.WriteLine("iam employee");
+            }
+            public virtual void func02()
+            {
+                Console.WriteLine($"emploee id {Id}, name {Name} , age {age}  ");
+            }
+
+        }
+
+        public class FullTimeEmploe : Employee
+        {
+            public decimal Salary { get; set; }
+            public new void func01()
+            {
+                Console.WriteLine("iam full time employee");
+            }
+
+            public override void func02()
+            {
+                Console.WriteLine($"emploee id {Id}, name {Name} ,age {age} ,salary{Salary}  ");
+            }
+
+        }
+
+        public class PartTimeemploee : Employee
+        {
+            public decimal hoursalary { get; set; }
+            public new void func01()
+            {
+                Console.WriteLine("iam part time emploee");
+            }
+
+            public override void func02()
+            {
+                Console.WriteLine($"emploee id {Id}, name {Name} ,age {age} ,salary{hoursalary}  ");
+            }
+
+        }
+        #endregion
+
+
+        #region binding is a behivour
+        public static void proccessEmployee(Employee employee) //emploee =newfulltimeemploee()
+        {
+            if (employee is not null)
+            {
+                employee.func01();  //iam emploee  static
+
+                employee.func02(); // dynamic for fulltimeemploee
+            }
+        }
+        #endregion
         static void Main(string[] args)
         {
 
@@ -86,7 +151,7 @@ namespace Demo
             ///after overridding
 
             Console.WriteLine(child.ToString()); // X: 1 Y: 2 Z: 3
-            Console.WriteLine("\n-------------------------------------------\n");            
+            Console.WriteLine("\n-------------------------------------------\n");
             Console.WriteLine($"Product: {child.Product()}"); // Product = 6
 
 
@@ -122,7 +187,7 @@ namespace Demo
             #region Binding
 
             TypeA RefBase = new TypeB(3, 2);
-            
+
             RefBase.A = 11;
 
             //RefBase.B = 22; invalid
@@ -133,7 +198,27 @@ namespace Demo
 
             #endregion
 
+            #region binding is a behivour
 
+            FullTimeEmploe fullTimeEmploe = new FullTimeEmploe()
+            {
+                Id = 10,
+                Name = "ahmed",
+                age = 28,
+                Salary = 5000
+            };
+
+            proccessEmployee(fullTimeEmploe);
+
+            PartTimeemploee partTimeemploee = new PartTimeemploee()
+            {
+                Id = 1,
+                Name = "ahmed",
+                age = 48,
+                hoursalary = 60
+            };
+
+            #endregion
 
         }
     }
